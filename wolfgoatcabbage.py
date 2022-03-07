@@ -1,8 +1,10 @@
 from search import Problem
+from anytree import Node, RenderTree
 # A* WolfGoatCabbage
 
 
 class WolfGoatCabbage(Problem):
+
 
     """ The problem of Wolf Goat and Cabbage. A state is represented
     as a set: the characters on the left/starting bank. An action is the set of people in the boat. """
@@ -23,7 +25,7 @@ class WolfGoatCabbage(Problem):
             return [{'F'}]
 
         if state == {'F', 'W', 'C'}:         #Correct
-            return [{'C','F'}]
+            return [{'C', 'F'}]
 
         if state == {'G'}:
             return [{'F', 'W'}]
@@ -35,13 +37,15 @@ class WolfGoatCabbage(Problem):
         """ Given state and action, return a new state that is the result of the action.
         Action is assumed to be a valid action in the state """
 
-        # blank is the index of the blank square
-        blank = self.find_blank_square(state)
-        new_state = list(state)
+        '''new_state = list(state)
 
-        delta = {'UP': -3, 'DOWN': 3, 'LEFT': -1, 'RIGHT': 1}
+        delta = {'wolf': -3, 'goat': 3, 'cabbage': -1, 'farmer': 1}
         neighbor = blank + delta[action]
         new_state[blank], new_state[neighbor] = new_state[neighbor], new_state[blank]
+        '''
+        # create a tree (map) with the states
+
+
 
         return tuple(new_state)
 
